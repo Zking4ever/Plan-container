@@ -1,0 +1,41 @@
+
+#task_list{
+    width: 500px;
+    height: 700px;
+    border: solid white;
+    border-radius: 20px;
+    padding: 40px;
+    transition: all 2s ease;
+    text-align: right;
+    display: flex;
+    gap: 20px;
+}
+
+.plan{
+    border: solid thin;
+    border-radius: 10px;
+    width: 246px;
+    height: 200px;
+    background-color: antiquewhite;
+}
+.plan_date{
+    height: 10%;
+    
+}
+.plan_title{
+        background-color: wheat;
+        text-align: left;
+        height: 15%;
+}
+.plan_desc{
+    background-color: antiquewhite;
+    padding-left: 5px;
+    text-align: left;
+    height: 65%;
+    
+}
+.plan_type{
+    border-top: solid thin white;
+    background-color: antiquewhite;
+    height: 10%;
+}
