@@ -1,6 +1,6 @@
 var focus_date = document.getElementById("focus_date_selector");
 var focus_task = document.getElementById("focus_task_assign");
-function add_task(){
+function add_new_task(){
     focus_date.style.display = "flex";
 }
    //get all elements to work on
@@ -35,6 +35,20 @@ function date_submited(month,day,year){
 }
 	
 //now lets accept the task inputs
+function add_todo(){
+	var li = document.createElement('Li');
+	var ul = document.getElementById("list");
+	var name = document.getElementById("to_do_name").value;
+	name = document.createTextNode(name);
+	li.appendChild(name);
+	if(name === ""){
+		alert("Enter ToDo name first");
+	}else{
+		ul.appendChild(li);
+	}
+
+}
+
 var no_of_plans = 0;
 
 function set_task(event){

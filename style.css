@@ -107,6 +107,9 @@ span{
     height: 20%;
     background-color: azure;
 }
+input{
+    display: inline;
+}
 .date{
     background-color: white;
     width: 100px;
@@ -123,7 +126,7 @@ span{
 }
 .task_container{
     background-color: rgb(156, 151, 197);
-    height: 80%;
+    height: 75%;
     padding-left: 30px;
 }
 .catagory_of_task{

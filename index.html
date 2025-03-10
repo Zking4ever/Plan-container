@@ -20,7 +20,7 @@
                     <div class="plan_type">Task type</div>
                 </div>
             </div>
-            <button onclick="add_task();" style="height: 30px;">Add new task</button>
+            <button onclick="add_new_task();" style="height: 30px;">Add new task</button>
         </div>
  </div>
     
@@ -49,11 +49,12 @@
            <p>Discription</p>
            <textarea class="textarea" id="textarea"></textarea>
    
-           <h3>Summery</h3>
-           <br>
-           <br>
-           <button id="add" onclick="set_task(event)">Add</button>
+           <h3>To Do's</h3>
+           <input id="to_do_name" type="text" placeholder="To do list name"> 
+           <button  onclick="add_todo()">Add</button>
+           <ul id="list"></ul>
        </div>
+       <button onclick="set_task(event)">SET</button>
     </div>
    </div>
    <footer>&copy;2025 All Rights Reserved, Astawus Amsalu</footer>
