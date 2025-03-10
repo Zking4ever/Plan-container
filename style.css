@@ -3,13 +3,38 @@ body{
     background-attachment: fixed;
     height: 100vh;
 }
-#task_list{
-    width: 500px;
-    height: 700px;
+header{
+    height: 7%;
+    display: flex;
+    background-color: rgb(250, 250, 250,0.1);
+}
+.home{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.p_name{
+    font-size: 50px; 
+    padding: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+span{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.container{
     border: solid white;
     border-radius: 20px;
     padding: 40px;
     transition: all 2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+#task_list{
     text-align: right;
     display: flex;
     gap: 20px;
@@ -20,6 +45,7 @@ body{
     width: 246px;
     height: 200px;
     background-color: antiquewhite;
+    overflow: hidden;
 }
 .plan_date{
     height: 10%;
@@ -61,19 +87,24 @@ body{
     width: 500px;
     text-align: center;
     font-size: 32px;
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     padding: 15px;
+}
+#date_input{
+    width: 250px;
+    align-self: center;
 }
 .task{
     border: solid white;
     border-radius: 20px;
     width: 500px;
     height: 700px;
+    overflow: hidden;
 }
 .date_container{
-    height: 40%;
+    height: 20%;
     background-color: azure;
 }
 .date{
@@ -81,7 +112,7 @@ body{
     width: 100px;
     height: 120px;
     margin-left: 100px;
-    transform: translateY(190px);
+    transform: translateY(50px);
     border: solid thin;
     border-radius: 7px;
     text-align: center;
@@ -91,8 +122,8 @@ body{
     font-size: 40px;
 }
 .task_container{
-    background-color: rgb(23, 102, 90 ,0.5);
-    height: 60%;
+    background-color: rgb(156, 151, 197);
+    height: 80%;
     padding-left: 30px;
 }
 .catagory_of_task{
