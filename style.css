@@ -159,6 +159,31 @@ input{
     border-radius: 5px;
     background: transparent;
 }
+ul{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    overflow-y: scroll;
+}
+li{
+    font-size: 26px;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    padding: 5px;
+    padding-right: 0;
+    border: solid thin white;
+    border-radius: 5px;
+}
+.close{
+    position: relative;
+    right: 0;
+    width: 10%;
+    text-align: center;
+}
+.close:hover{
+    background-color: red;
+}
 h1,h3{
     margin: 0px;
 }

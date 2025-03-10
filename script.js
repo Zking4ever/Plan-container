@@ -34,13 +34,22 @@ function date_submited(month,day,year){
 	year_display.innerHTML = year;
 }
 	
-//now lets accept the task inputs
+ //make close posible
+ 
+//now lets accept the todo inputs
 function add_todo(){
 	var li = document.createElement('Li');
 	var ul = document.getElementById("list");
 	var name = document.getElementById("to_do_name").value;
 	name = document.createTextNode(name);
 	li.appendChild(name);
+	var close = document.createElement('Div');
+	var cross = document.createTextNode("*");
+	close.appendChild(cross);
+	close.className = "close";
+	close.setAttribute('id','close()');
+	alert(close.onclick);
+	li.appendChild(close);
 	if(name === ""){
 		alert("Enter ToDo name first");
 	}else{
@@ -48,6 +57,7 @@ function add_todo(){
 	}
 
 }
+ 
 
 var no_of_plans = 0;
 
