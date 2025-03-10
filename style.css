@@ -39,3 +39,16 @@
     background-color: antiquewhite;
     height: 10%;
 }
+.date_selector{
+    border: solid thin;
+    border-radius: 10px;
+    background-color: white;
+    height: 400px;
+    width: 500px;
+    text-align: center;
+    font-size: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
