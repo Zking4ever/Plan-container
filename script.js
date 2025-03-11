@@ -15,17 +15,27 @@ change.addEventListener('click',function (){
 });
 var body = document.getElementsByTagName('Body')[0];
 function day_mode(){
-	body.style.background = "linear-gradient(rgb(250,210,250,0.8),rgb(7,490,245,0.5))";
+	body.style.background = "linear-gradient(rgb(197 192 197 / 80%), rgb(137 137 137 / 50%))";
 	body.style.color = "black";
 	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(0,0,0,0.5)";
 	document.getElementById("date_selector").style.backgroundColor ="rgb(197, 195, 195)";
 	document.getElementById("container").style.border ="solid black";
+	document.getElementById('date').style.backgroundColor ="white";
+	document.getElementById('task_contaier').style.backgroundColor ="white";
+	document.getElementById("textarea").style.border ="solid black";
+	document.getElementById("title").style.border ="solid black";
+	document.getElementById("to_do_name").style.border ="solid black";
 }
 function night_mode(){
 	body.style.background = "linear-gradient(rgb(0,0,34,0.8),rgb(7,4,78,0.8)";
 	body.style.color = "white";
 	document.getElementById("date_selector").style.backgroundColor ="rgb(36, 34, 34)";
-	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(250, 250, 250,0.1)";
+	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(250, 250, 250,0.1) ";
+	document.getElementById('date').style.backgroundColor ="rgb(10, 9, 9)";
+	document.getElementById('task_contaier').style.backgroundColor ="rgb(0,0,34,0.95)";
+	document.getElementById("textarea").style.border ="solid white";
+	document.getElementById("title").style.border ="solid white";
+	document.getElementById("to_do_name").style.border ="solid white";
 }
 var focus_date = document.getElementById("focus_date_selector");
 var focus_task = document.getElementById("focus_task_assign");
@@ -137,12 +147,20 @@ function set_task(event){
 		 for(var i=0; i<done.length; i++){
 			var check = document.getElementById("check_mark");
 			done[i].addEventListener('click',function (){
-
+				check.style.display ="block";
 				if(this.className =="done_task"){
 					this.className ="";
 					var changed = document.getElementById("changed");
 					this.removeChild(changed);
 					this.style.paddingRight ="0px";
+			//making possible to delate task		
+			var close = document.getElementsByClassName("close");
+			for(var i=0; i<close.length;i++){
+				close[i].addEventListener('click',function (){
+					var parent = this.parentElement;
+					parent.style.display ="none";
+				});
+			}
 
 				}else{
 					this.setAttribute('class',"done_task");
@@ -151,13 +169,7 @@ function set_task(event){
 					this.style.paddingRight ="20px";
 					check.id ="check_mark";
 				}
-				});
-			}
-			var close = document.getElementsByClassName("close");
-			for(var i=0; i<close.length;i++){
-				close[i].addEventListener('click',function (){
-					var parent = this.parentElement;
-					parent.style.display ="none";
+				check.style.display ="none";
 				});
 			}
 }

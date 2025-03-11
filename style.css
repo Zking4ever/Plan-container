@@ -16,7 +16,11 @@ header{
     height: 80%;
     display: flex;
     flex-direction: column;
+    gap: 5px;
     text-align: center;
+}
+.logo{
+    padding-left: 50px;
 }
 #change_theme{
     width: 30px;
@@ -125,10 +129,11 @@ span{
 }
 #date_input{
     width: 250px;
+    height: 30px;
     align-self: center;
 }
 .task{
-    border: solid white;
+    border: solid black;
     border-radius: 20px;
     width: 500px;
     height: 700px;
@@ -136,18 +141,18 @@ span{
 }
 .date_container{
     height: 20%;
-    background-color: azure;
+    background-color: rgba(107, 103, 103, 0.957);
 }
 input{
     display: inline;
 }
 .date{
-    background-color: white;
+    background-color: rgb(10, 9, 9);
     width: 100px;
     height: 120px;
     margin-left: 100px;
     transform: translateY(50px);
-    border: solid thin;
+    border: solid thin black;
     border-radius: 7px;
     text-align: center;
 }
@@ -156,7 +161,7 @@ input{
     font-size: 40px;
 }
 .task_container{
-    background-color: rgb(156, 151, 197);
+    background-color:rgb(0,0,34,0.95);
     height: 75%;
     padding-left: 30px;
 }
@@ -178,23 +183,31 @@ input{
 }
 #title{
     background-color: transparent;
-    border: solid thin;
+    border: solid thin white;
+    color: aliceblue;
     font-size: 30px;
     border-radius: 5px;
 }
 .textarea{
-    height:120px;
+    height:60px;
     width: 85%; 
-    border: solid thin;
+    border: solid thin white;
+    color: aliceblue;
     font-size: 30px;
     border-radius: 5px;
     background: transparent;
+}
+#to_do_name{
+    height: 35px;
+    background-color: transparent;
+    border: solid thin white;
+    color: azure;
 }
 ul{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 150px;
+    max-height: 250px;
     overflow-y: scroll;
     
 }
@@ -205,12 +218,12 @@ li{
     width: 300px;
     padding: 5px;
     padding-right: 0;
-    background-color: rgb(245, 238, 238);
+    background-color: rgb(161, 155, 155);
     border-radius: 5px;
     cursor: pointer;
 }
 li:nth-child(even){
-    background-color: rgb(192, 182, 182);
+    background-color: rgb(129, 128, 128);
 }
 .done_task{
     text-decoration: line-through;
@@ -260,7 +273,9 @@ footer{
  animation-fill-mode: forwards;
 }
 @media(max-width : 780px){
-        
+ .logo{
+        padding-left: 20px;
+ }     
 .p_name{
     font-size: 50px; 
     padding: 15px;
