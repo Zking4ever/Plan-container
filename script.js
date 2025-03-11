@@ -1,3 +1,32 @@
+//changing the theme of the page
+var change = document.getElementById("change_theme");
+change.addEventListener('click',function (){
+	var div = document.getElementById("theme_div");
+	var theme_id = div.getAttribute('data-theme-id');
+	if(theme_id == 1){
+		div.style.transform = "translateX(-100px)";
+		div.setAttribute('data-theme-id',"0");
+		day_mode();
+	}else{
+		div.style.transform = "translateX(0px)";
+		div.setAttribute('data-theme-id',"1");
+		night_mode();
+	}
+});
+var body = document.getElementsByTagName('Body')[0];
+function day_mode(){
+	body.style.background = "linear-gradient(rgb(250,210,250,0.8),rgb(7,490,245,0.5))";
+	body.style.color = "black";
+	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(0,0,0,0.5)";
+	document.getElementById("date_selector").style.backgroundColor ="rgb(197, 195, 195)";
+	document.getElementById("container").style.border ="solid black";
+}
+function night_mode(){
+	body.style.background = "linear-gradient(rgb(0,0,34,0.8),rgb(7,4,78,0.8)";
+	body.style.color = "white";
+	document.getElementById("date_selector").style.backgroundColor ="rgb(36, 34, 34)";
+	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(250, 250, 250,0.1)";
+}
 var focus_date = document.getElementById("focus_date_selector");
 var focus_task = document.getElementById("focus_task_assign");
 function add_new_task(){
@@ -106,16 +135,21 @@ function set_task(event){
         
 		 var done = document.getElementsByTagName("Li");
 		 for(var i=0; i<done.length; i++){
+			var check = document.getElementById("check_mark");
 			done[i].addEventListener('click',function (){
 
 				if(this.className =="done_task"){
 					this.className ="";
+					var changed = document.getElementById("changed");
+					this.removeChild(changed);
+					this.style.paddingRight ="0px";
 
 				}else{
 					this.setAttribute('class',"done_task");
-					var check = document.getElementById("check_mark");
-					
-					this.appendChild(check);
+					check.id ="changed";
+					this.innerHTML = this.innerHTML + check.outerHTML;
+					this.style.paddingRight ="20px";
+					check.id ="check_mark";
 				}
 				});
 			}
