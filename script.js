@@ -49,15 +49,15 @@ function add_todo(){
 		var close = document.createElement('Div');
 		var cross = document.createTextNode("*");
 		close.appendChild(cross);
+		close.addEventListener('click',function (){
+			var parent = this.parentElement;
+			parent.style.display ="none";
+		});
 		close.className = "close";
 		name = document.createTextNode(name);
 		li.setAttribute('title','click when finished');
 
 		li.appendChild(name);
-		li.addEventListener('click',function (){
-			li.style.backgroundColor ="green";
-		}
-		);
 		li.appendChild(close);
 		ul.appendChild(li);
 
@@ -111,6 +111,13 @@ function set_task(event){
 				}else{
 					this.setAttribute('class',"done_task");
 				}
+				});
+			}
+			var close = document.getElementsByClassName("close");
+			for(var i=0; i<close.length;i++){
+				close[i].addEventListener('click',function (){
+					var parent = this.parentElement;
+					parent.style.display ="none";
 				});
 			}
 }
