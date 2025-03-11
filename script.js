@@ -185,7 +185,7 @@ function set_task(event){
 			document.getElementById("textarea").value ="";
 }
 function styling(plan){
-	plan.style.width = "400px";
-	plan.style.height= "300px";
-	plan.style.fontSize = "15px";
+	plan.style.width = "300px";
+	plan.style.height= "200px";
+	plan.style.fontSize = "13px";
 }
