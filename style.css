@@ -12,8 +12,8 @@ header{
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .p_name{
     font-size: 50px; 
@@ -33,6 +33,10 @@ span{
     flex-direction: column;
     gap: 30px;
     align-items: center;
+    max-width: 60%;
+    overflow-x: scroll;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 #task_list{
     text-align: right;
@@ -49,6 +53,8 @@ span{
 }
 .plan_date{
     height: 10%;
+    display: inline-block;
+    align-items: center;
     
 }
 .plan_title{
@@ -164,6 +170,7 @@ ul{
     flex-direction: column;
     height: 150px;
     overflow-y: scroll;
+    
 }
 li{
     font-size: 26px;
@@ -174,6 +181,10 @@ li{
     padding-right: 0;
     border: solid thin white;
     border-radius: 5px;
+    cursor: pointer;
+}
+.done_task{
+    text-decoration: line-through;
 }
 .close{
     position: relative;
@@ -186,4 +197,11 @@ li{
 }
 h1,h3{
     margin: 0px;
+}
+button{
+    min-width: 70px;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 15px;
+    background-color:white
 }

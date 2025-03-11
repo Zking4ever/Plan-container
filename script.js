@@ -13,6 +13,7 @@ function add_new_task(){
 		var plan_title = document.getElementsByClassName("plan_title");
 		var plan_desc = document.getElementsByClassName("plan_desc");
 		var plan_type = document.getElementsByClassName("plan_type");
+	var container = document.getElementById("container");
 	//get the date to assign a task
 const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
  
@@ -50,9 +51,20 @@ function add_todo(){
 		close.appendChild(cross);
 		close.className = "close";
 		name = document.createTextNode(name);
+		li.setAttribute('title','click when finished');
+
 		li.appendChild(name);
+		li.addEventListener('click',function (){
+			li.style.backgroundColor ="green";
+		}
+		);
 		li.appendChild(close);
 		ul.appendChild(li);
+
+
+		//now lets mark a finished task when clicked
+
+		
 	}
 
 }
@@ -79,17 +91,31 @@ function set_task(event){
 
         plan_title[no_of_plans].innerHTML = "Title: " + title;
         plan_date[no_of_plans].innerHTML = date;
-        plan_desc[no_of_plans].innerHTML = description;
+        plan_desc[no_of_plans].innerHTML = description ;
 
-		alert(no_of_plans);
-		plan_desc[no_of_plans].innerHTML = plan_desc.innerHTML + ul[no_of_plans].outerHTML;
+		plan_desc[no_of_plans].innerHTML = plan_desc[no_of_plans].innerHTML + ul[no_of_plans].outerHTML;
         styling(plan[no_of_plans]);
          no_of_plans++;
 		 ul[no_of_plans].innerHTML ="";
+		 if(no_of_plans>2){
+			container.style.paddingLeft = "100px";
+		 }
         
+		 var done = document.getElementsByTagName("Li");
+		 for(var i=0; i<done.length; i++){
+			done[i].addEventListener('click',function (){
+
+				if(this.className =="done_task"){
+					this.className ="";
+
+				}else{
+					this.setAttribute('class',"done_task");
+				}
+				});
+			}
 }
 function styling(plan){
-	plan.style.width = "250px";
-	plan.style.height= "170px";
+	plan.style.width = "400px";
+	plan.style.height= "300px";
 	plan.style.fontSize = "15px";
 }
