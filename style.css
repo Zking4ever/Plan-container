@@ -162,8 +162,16 @@ input{
 }
 .task_container{
     background-color:rgb(0,0,34,0.95);
-    height: 75%;
+    height: 73%;
     padding-left: 30px;
+}
+.set{
+    height: 7%; 
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    background-color:rgb(0,0,34,0.95);
+    border-top: solid;
 }
 .catagory_of_task{
     display: flex;
