@@ -39,20 +39,19 @@ function date_submited(month,day,year){
 //now lets accept the todo inputs
 function add_todo(){
 	var li = document.createElement('Li');
-	var ul = document.getElementById("list");
+	var ul = document.getElementsByClassName("list");
+	ul = ul[no_of_plans];
 	var name = document.getElementById("to_do_name").value;
-	name = document.createTextNode(name);
-	li.appendChild(name);
-	var close = document.createElement('Div');
-	var cross = document.createTextNode("*");
-	close.appendChild(cross);
-	close.className = "close";
-	close.setAttribute('id','close()');
-	alert(close.onclick);
-	li.appendChild(close);
-	if(name === ""){
+	if(name == ""){
 		alert("Enter ToDo name first");
 	}else{
+		var close = document.createElement('Div');
+		var cross = document.createTextNode("*");
+		close.appendChild(cross);
+		close.className = "close";
+		name = document.createTextNode(name);
+		li.appendChild(name);
+		li.appendChild(close);
 		ul.appendChild(li);
 	}
 
@@ -75,12 +74,18 @@ function set_task(event){
         var date = month + " " + day + ", " + year;
         var title = document.getElementById("title").value;
         var description = document.getElementById("textarea").value;
+		//here also lets read the added todo's
+		var ul = document.getElementsByClassName("list");
 
         plan_title[no_of_plans].innerHTML = "Title: " + title;
         plan_date[no_of_plans].innerHTML = date;
         plan_desc[no_of_plans].innerHTML = description;
+
+		alert(no_of_plans);
+		plan_desc[no_of_plans].innerHTML = plan_desc.innerHTML + ul[no_of_plans].outerHTML;
         styling(plan[no_of_plans]);
          no_of_plans++;
+		 ul[no_of_plans].innerHTML ="";
         
 }
 function styling(plan){
