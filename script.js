@@ -84,13 +84,16 @@ function set_task(event){
         //read all inputs of the plan
         var day = document.getElementById("day_display").innerHTML , month = document.getElementById("month_display").innerHTML, year = document.getElementById("year_display").innerHTML;
         var date = month + " " + day + ", " + year;
+		date = document.createTextNode(date);
         var title = document.getElementById("title").value;
         var description = document.getElementById("textarea").value;
 		//here also lets read the added todo's
 		var ul = document.getElementsByClassName("list");
 
         plan_title[no_of_plans].innerHTML = "Title: " + title;
-        plan_date[no_of_plans].innerHTML = date;
+		var span =document.getElementById('default');
+		plan_date[no_of_plans].removeChild(span);
+        plan_date[no_of_plans].appendChild(date);
         plan_desc[no_of_plans].innerHTML = description ;
 
 		plan_desc[no_of_plans].innerHTML = plan_desc[no_of_plans].innerHTML + ul[no_of_plans].outerHTML;
@@ -110,6 +113,9 @@ function set_task(event){
 
 				}else{
 					this.setAttribute('class',"done_task");
+					var check = document.getElementById("check_mark");
+					
+					this.appendChild(check);
 				}
 				});
 			}
