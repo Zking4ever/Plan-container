@@ -207,7 +207,7 @@ ul{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-height: 250px;
+    height: 250px;
     overflow-y: scroll;
     
 }
@@ -251,6 +251,25 @@ button{
     border-radius: 15px;
     background-color:white
 }
+section{
+    width: 70%;
+    margin-left: 10%;
+    font-size: 22px;
+    padding-top: 80px;
+}
+#inst{
+    list-style-type: disc;
+    height: 500px;
+    overflow: unset;
+}
+#istraction{
+    position: relative;
+    display: block;
+    width: 70%;
+    font-size: 20px;
+    cursor:none;
+    background-color: transparent;
+}
 footer{
     position: relative;
     height: 10%;
@@ -265,7 +284,6 @@ footer{
   justify-content: space-between;
 }
 .socials a{
-    
   transition: all 1s ease;
 }
 .socials a:hover{
@@ -273,6 +291,10 @@ footer{
  animation-fill-mode: forwards;
 }
 @media(max-width : 780px){
+    .container{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
  .logo{
         padding-left: 20px;
  }     
@@ -283,5 +305,8 @@ footer{
 }
 .some_desc{
     font-size: 28px;
+}
+footer{
+    margin-top: 150px;
 }
 } 

@@ -15,16 +15,20 @@ change.addEventListener('click',function (){
 });
 var body = document.getElementsByTagName('Body')[0];
 function day_mode(){
-	body.style.background = "linear-gradient(rgb(197 192 197 / 80%), rgb(137 137 137 / 50%))";
+	body.style.background = "linear-gradient(rgb(116 128 173 / 80%), rgb(121 122 157 ";
 	body.style.color = "black";
+	document.getElementsByClassName('logo')[0].style.color = "white";
 	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(0,0,0,0.5)";
 	document.getElementById("date_selector").style.backgroundColor ="rgb(197, 195, 195)";
 	document.getElementById("container").style.border ="solid black";
 	document.getElementById('date').style.backgroundColor ="white";
 	document.getElementById('task_contaier').style.backgroundColor ="white";
 	document.getElementById("textarea").style.border ="solid black";
+	document.getElementById("textarea").style.color ="black";
 	document.getElementById("title").style.border ="solid black";
+	document.getElementById("title").style.color ="black";
 	document.getElementById("to_do_name").style.border ="solid black";
+	document.getElementById("to_do_name").style.color ="black";
 }
 function night_mode(){
 	body.style.background = "linear-gradient(rgb(0,0,34,0.8),rgb(7,4,78,0.8)";
@@ -34,8 +38,11 @@ function night_mode(){
 	document.getElementById('date').style.backgroundColor ="rgb(10, 9, 9)";
 	document.getElementById('task_contaier').style.backgroundColor ="rgb(0,0,34,0.95)";
 	document.getElementById("textarea").style.border ="solid white";
+	document.getElementById("textarea").style.color ="white";
 	document.getElementById("title").style.border ="solid white";
+	document.getElementById("title").style.color ="white";
 	document.getElementById("to_do_name").style.border ="solid white";
+	document.getElementById("to_do_name").style.color ="white";
 }
 var focus_date = document.getElementById("focus_date_selector");
 var focus_task = document.getElementById("focus_task_assign");
@@ -72,6 +79,7 @@ function date_submited(month,day,year){
 	day_display.innerHTML = day;
 	month_display.innerHTML = month;
 	year_display.innerHTML = year;
+	document.getElementById('date_input').value="";//removing for next time
 }
 	
  //make close posible
@@ -83,7 +91,7 @@ function add_todo(){
 	ul = ul[no_of_plans];
 	var name = document.getElementById("to_do_name").value;
 	if(name == ""){
-		alert("Enter ToDo name first");
+		alert("Enter the step first");
 	}else{
 		var close = document.createElement('Div');
 		var cross = document.createTextNode("*");
@@ -172,6 +180,9 @@ function set_task(event){
 				check.style.display ="none";
 				});
 			}
+			//finialy lets remove inputs for next time
+			document.getElementById("title").value ="";
+			document.getElementById("textarea").value ="";
 }
 function styling(plan){
 	plan.style.width = "400px";
