@@ -15,12 +15,11 @@ change.addEventListener('click',function (){
 });
 var body = document.getElementsByTagName('Body')[0];
 function day_mode(){
-	body.style.background = "linear-gradient(rgb(116 128 173 / 80%), rgb(121 122 157 ";
+	body.style.backgroundColor="white";
 	body.style.color = "black";
 	document.getElementsByClassName('logo')[0].style.color = "white";
 	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(0,0,0,0.5)";
-	document.getElementById("date_selector").style.backgroundColor ="rgb(197, 195, 195)";
-	document.getElementById("container").style.border ="solid black";
+	document.getElementById("date_selector").style.backgroundColor ="rgb(247, 238, 238)";
 	document.getElementById('date').style.backgroundColor ="white";
 	document.getElementById('task_contaier').style.backgroundColor ="white";
 	document.getElementById("textarea").style.border ="solid black";
@@ -31,7 +30,7 @@ function day_mode(){
 	document.getElementById("to_do_name").style.color ="black";
 }
 function night_mode(){
-	body.style.background = "linear-gradient(rgb(0,0,34,0.8),rgb(7,4,78,0.8)";
+	body.style.backgroundColor = "black";
 	body.style.color = "white";
 	document.getElementById("date_selector").style.backgroundColor ="rgb(36, 34, 34)";
 	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(250, 250, 250,0.1) ";
@@ -145,7 +144,7 @@ function set_task(event){
         plan_desc[no_of_plans].innerHTML = description ;
 
 		plan_desc[no_of_plans].innerHTML = plan_desc[no_of_plans].innerHTML + ul[no_of_plans].outerHTML;
-        styling(plan[no_of_plans]);
+       // styling(plan[no_of_plans]);
          no_of_plans++;
 		 ul[no_of_plans].innerHTML ="";
 		 if(no_of_plans>2){
@@ -184,9 +183,4 @@ function set_task(event){
 			//finialy lets remove inputs for next time
 			document.getElementById("title").value ="";
 			document.getElementById("textarea").value ="";
-}
-function styling(plan){
-	plan.style.width = "420px";
-	plan.style.height= "330px";
-	plan.style.fontSize = "13px";
 }
