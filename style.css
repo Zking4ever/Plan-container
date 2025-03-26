@@ -17,6 +17,7 @@ header{
     display: flex;
     flex-direction: column;
     gap: 5px;
+    align-items: center;
     text-align: center;
 }
 .nav{
@@ -75,8 +76,8 @@ span{
 .plan{
     border: solid thin;
     border-radius: 10px;
-    width: 246px;
-    height: 200px;
+    width: 400px;
+    height: 330px;
     background-color: antiquewhite;
     overflow: hidden;
 }
@@ -100,8 +101,8 @@ span{
     background-color: antiquewhite;
     padding-left: 5px;
     text-align: left;
-    height: 65%;
-    
+    height: 60%;
+    overflow-y: scroll;
 }
 .plan_type{
     border-top: solid thin white;
@@ -221,22 +222,20 @@ ul{
     flex-direction: column;
     gap: 5px;
     height: 250px;
-    overflow-y: scroll;
-    
 }
 li{
     font-size: 26px;
     display: flex;
     justify-content: space-between;
-    width: 300px;
+    width: 230px;
     padding: 5px;
     padding-right: 0;
-    background-color: rgb(161, 155, 155);
+    background-color: rgb(124, 117, 117);
     border-radius: 5px;
     cursor: pointer;
 }
 li:nth-child(even){
-    background-color: rgb(129, 128, 128);
+    background-color: rgb(146, 139, 139);
 }
 .done_task{
     text-decoration: line-through;
@@ -276,7 +275,7 @@ section{
     height: 500px;
     gap: 5px;
 }
-#istraction{
+#istruction{
     position: relative;
     display: block;
     width: 70%;
@@ -305,14 +304,15 @@ footer{
  animation-fill-mode: forwards;
 }
 @media(max-width : 780px){
-    .container{
-        margin-left: 10%;
-        margin-right: 10%;
+.container{
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 80%;
 }
 .nav{
     width: 40%;
 }
- .logo{
+.logo{
         padding-left: 20px;
  }     
 .p_name{
@@ -396,10 +396,16 @@ ul{
 }
 li{
     font-size: 20px;
-    width: 160px;
+    width: 150px;
     padding: 5px;
 }
 footer{
     margin-top: 150px;
+}
+#inst{
+    height: 600px;
+}
+#istruction{
+    width: 95%;
 }
 } 

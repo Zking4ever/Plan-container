@@ -126,7 +126,10 @@ function set_task(event){
         //lets add a new class for every new task but in the first case it will change the default value so no need to add
         if(no_of_plans!=0){
             list_holder.innerHTML = list_holder.innerHTML + plan[0].outerHTML;
-        } 
+        }else{
+			var span =document.getElementById('default');
+		    plan_date[no_of_plans].removeChild(span);
+		}
 
         //read all inputs of the plan
         var day = document.getElementById("day_display").innerHTML , month = document.getElementById("month_display").innerHTML, year = document.getElementById("year_display").innerHTML;
@@ -138,8 +141,6 @@ function set_task(event){
 		var ul = document.getElementsByClassName("list");
 
         plan_title[no_of_plans].innerHTML = "Title: " + title;
-		var span =document.getElementById('default');
-		plan_date[no_of_plans].removeChild(span);
         plan_date[no_of_plans].appendChild(date);
         plan_desc[no_of_plans].innerHTML = description ;
 
@@ -185,7 +186,7 @@ function set_task(event){
 			document.getElementById("textarea").value ="";
 }
 function styling(plan){
-	plan.style.width = "300px";
-	plan.style.height= "200px";
+	plan.style.width = "420px";
+	plan.style.height= "330px";
 	plan.style.fontSize = "13px";
 }
