@@ -59,24 +59,20 @@ span{
     flex-direction: column;
     gap: 30px;
     align-items: center;
-    max-width: 60%;
-    overflow-x: scroll;
-    scroll-padding-left: 50px;
-    margin-left: 20%;
-    margin-right: 20%;
 }
 #task_list{
-    display: flex;
     gap: 20px;
     color: black;
+    width: 100%;
 }
 .plan{
     border: solid thin;
     border-radius: 10px;
-    width: 400px;
-    height: 330px;
+    width: 100%;
+    max-width:540px;
+    min-height: 330px;
     background-color: antiquewhite;
-    overflow: hidden;
+    display: inline-block;
 }
 .plan_date{
     height: 10%;
@@ -84,7 +80,7 @@ span{
     justify-content: end;
     align-items: center;
     padding-right: 10px;
-    
+    gap:5px;
 }
 .plan_title{
         background-color: wheat;
@@ -219,12 +215,13 @@ ul{
     flex-direction: column;
     gap: 5px;
     height: 250px;
+    padding:5px;
 }
 li{
     font-size: 26px;
     display: flex;
     justify-content: space-between;
-    width: 230px;
+    width: 98%;
     padding: 5px;
     padding-right: 0;
     background-color: rgb(124, 117, 117);
@@ -389,11 +386,9 @@ input{
 }
 ul{
     height: 100px;
-    
 }
 li{
     font-size: 20px;
-    width: 150px;
     padding: 5px;
 }
 footer{
