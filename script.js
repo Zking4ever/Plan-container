@@ -102,11 +102,25 @@ function changeTaskTheme(i,n){
 function loadTasks(){
 	// read from local storage for persistency
 	readTasks();
-	list_holder.innerHTML = prepareTasks();
+	list_holder.innerHTML = prepareTasks(tasks);
 }
 
-function prepareTasks(){
-	return tasks.map((task,index)=>{
+function search(e){
+	const key = (e.target.value).toLowerCase();
+	
+	const matchTasks = [];
+	tasks.map(t=>{ 
+		const title = String(t.title).toLowerCase();
+		const content = String(t.content).toLowerCase();
+		if(title.includes(key) || content.includes(key)){
+			matchTasks.push(t);
+		}
+	});
+	list_holder.innerHTML = prepareTasks(matchTasks);
+}
+
+function prepareTasks(list){
+	return list.map((task,index)=>{
 		return (
 			`<div class="plan theme${task.color}">
                     <input class="plan_title" placeholder="Title" value='${task.title}' onchange='saveChange(event,${index},"title")'>
