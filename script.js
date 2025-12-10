@@ -53,7 +53,6 @@ function add_new_task(){
 	var month_display = document.getElementById('month_display');
 	var year_display = document.getElementById('year_display');
 	var list_holder = document.getElementById('task_list');
-		var plan = document.getElementsByClassName("plan");
 		var plan_date = document.getElementsByClassName("plan_date");
 		var plan_title = document.getElementsByClassName("plan_title");
 		var plan_desc = document.getElementsByClassName("plan_desc");
@@ -193,7 +192,6 @@ function readTasks(){
 		tasks = JSON.parse(tasksString);
 		taskNo = tasks.length;
 	}
-	console.log(tasks);
 }
 loadTasks();
 
@@ -205,14 +203,18 @@ function add(){
 		'content':'',
 		'tasks': [],
 		'date': new Date().toLocaleString(),
-		'color':0
+		'color':1
 	})
 
-	list_holder.innerHTML += `<div class="plan">
-                    <input class="plan_title" placeholder="Title" onchange='saveChange(event,${index},"title")'>
-                    <textarea class="plan_text" placeholder="..." onchange='saveChange(${taskNo},"content")'></textarea>
+	list_holder.innerHTML += `<div class="plan theme1">
+                    <input class="plan_title" placeholder="Title" onchange='saveChange(event,${taskNo},"title")'>
+                    <textarea class="plan_text" onchange='saveChange(event,${taskNo},"content")'></textarea>
                     <div class="plan_action_btns">
-                        <div class="action_btns">[add checklist] [theme colors]</div>
+                        <div class="action_btns">
+							<div class='pt one' onclick='changeTaskTheme(${taskNo},1)'></div>
+							<div class='pt two' onclick='changeTaskTheme(${taskNo},2)'></div>
+							<div class='pt three' onclick='changeTaskTheme(${taskNo},3)'></div>
+						</div>
                         <span style='font-size:14px'>${new Date().toLocaleString()}</span>
                     </div>
                 </div>`;
@@ -227,6 +229,12 @@ function saveChange(e,id,type){
 	saveTasks();
 	// save permanently the change
 }
+function changeTaskTheme(i,n){
+	tasks[i].color = n;
+	var plan = document.getElementsByClassName("plan");
+	plan[i].className = 'plan theme'+n;
+	saveTasks();
+}
 
 function loadTasks(){
 	// read from local storage for persistency
@@ -237,11 +245,15 @@ function loadTasks(){
 function prepareTasks(){
 	return tasks.map((task,index)=>{
 		return (
-			`<div class="plan theme2">
+			`<div class="plan theme${task.color}">
                     <input class="plan_title" placeholder="Title" value='${task.title}' onchange='saveChange(event,${index},"title")'>
                     <textarea class="plan_text" onchange='saveChange(event,${index},"content")'>${task.content}</textarea>
                     <div class="plan_action_btns">
-                        <div class="action_btns">[add checklist] [theme colors]</div>
+                        <div class="action_btns">
+							<div class='pt one' onclick='changeTaskTheme(${index},1)'></div>
+							<div class='pt two' onclick='changeTaskTheme(${index},2)'></div>
+							<div class='pt three' onclick='changeTaskTheme(${index},3)'></div>
+						</div>
                         <span style='font-size:14px'>${task.date}</span>
                     </div>
                 </div>`

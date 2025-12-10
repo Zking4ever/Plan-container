@@ -89,15 +89,16 @@ input[type='search']:focus{
 .container{
     width: 100%;
     transition: all 2s ease;
-    display: flex;
-    flex-direction: column;
     gap: 30px;
     align-items: center;
 }
 #task_list{
-    gap: 20px;
+    gap: 10px;
     color: black;
-    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    align-items: center;
 }
 input,
 textarea{
@@ -111,9 +112,8 @@ textarea{
     border-radius: 10px;
     width: 100%;
     max-width:540px;
-    display: inline-block;
-    margin: 10px;
     overflow: hidden;
+    display: inline-block;
 }
 /* Different themes for the tasks */
 .plan.theme1{
@@ -123,7 +123,7 @@ textarea{
         background-color: wheat;
 }
 .plan.theme2{
-    background-color: #5dc9c0;
+    background-color: #5dc9c0;  
 }
 .plan.theme2 .plan_title{
         background-color: #6bc7d1;
@@ -134,7 +134,7 @@ textarea{
 .plan.theme3 .plan_title{
         background-color: #b89932;
 }
-
+/*  */
 
 .plan_title{
         height: 40px;
@@ -151,12 +151,31 @@ textarea{
     padding: 0 5px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
-.plan_type{
-    border-top: solid thin white;
-    background-color: antiquewhite;
-    height: 10%;
+.pt{
+    width: 24px;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    outline: auto;
+    cursor: pointer;
+    margin: 1px 2px;
+    display: inline-block;
 }
+.pt.one{
+    border-top: 12px solid wheat;
+    border-bottom: 12px solid antiquewhite;
+}
+.pt.two{
+    border-top: 12px solid #6bc7d1;
+    border-bottom: 12px solid #5dc9c0;
+}
+.pt.three{
+    border-top: 12px solid #ab712e;
+    border-bottom: 12px solid #b89932;
+}
+
+
 .plan_date{
     height: 30px;
     display: flex;
