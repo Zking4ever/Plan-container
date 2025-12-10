@@ -52,8 +52,13 @@ span{
     font-size: 20px;
     padding-bottom: 10px;
 }
+.quick-access{
+    width: 83%;
+    display: flex;
+    justify-content: space-between;
+}
 .container{
-    padding: 40px;
+    width: 100%;
     transition: all 2s ease;
     display: flex;
     flex-direction: column;
@@ -63,6 +68,13 @@ span{
 #task_list{
     gap: 20px;
     color: black;
+    width: 95%;
+}
+input,
+textarea{
+    border: none;
+    outline: none;
+    background-color: transparent;
     width: 100%;
 }
 .plan{
@@ -70,37 +82,40 @@ span{
     border-radius: 10px;
     width: 100%;
     max-width:540px;
-    min-height: 330px;
     background-color: antiquewhite;
     display: inline-block;
-}
-.plan_date{
-    height: 10%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    padding-right: 10px;
-    gap:5px;
+    margin: 10px;
+    overflow: hidden;
 }
 .plan_title{
-        background-color: wheat;
-        height: 15%;
-        display: flex;
-        justify-content: start;
-        padding-left: 10px;
+        height: 40px;
+        padding-left: 5px;
+        font-size: 20px;
         text-transform: capitalize;
+        background-color: wheat;
 }
-.plan_desc{
-    background-color: antiquewhite;
+.plan_text{
+    min-height: 60px;
     padding-left: 5px;
     text-align: left;
-    height: 60%;
-    overflow-y: scroll;
+}
+.plan_action_btns{
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
 }
 .plan_type{
     border-top: solid thin white;
     background-color: antiquewhite;
     height: 10%;
+}
+.plan_date{
+    height: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+    gap:5px;
 }	
 .focus{
     width: 100%;
@@ -214,14 +229,13 @@ ul{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 250px;
     padding:5px;
 }
 li{
     font-size: 26px;
     display: flex;
     justify-content: space-between;
-    width: 98%;
+    width: 96%;
     padding: 5px;
     padding-right: 0;
     background-color: rgb(124, 117, 117);
@@ -298,11 +312,6 @@ footer{
  animation-fill-mode: forwards;
 }
 @media(max-width : 780px){
-.container{
-        margin-left: 0;
-        margin-right: 0;
-        max-width: 80%;
-}
 .nav{
     width: 40%;
 }
@@ -341,16 +350,10 @@ input{
     text-align: center;
 }
 .plan{
-    border: solid thin;
     border-radius: 10px;
-    width: 246px;
-    height: 200px;
-    background-color: antiquewhite;
+    width: 100%;
     overflow: hidden;
-}
-.plan{
-    width: 300px;
-    height: 200px;
+    margin: 2px auto;
 }
 .date h1{
     padding-top: 10px;

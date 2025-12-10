@@ -108,9 +108,7 @@ function add_todo(){
 		ul.appendChild(li);
 
 
-		//now lets mark a finished task when clicked
-
-		
+		//now lets mark a finished task when clicked	
 	}
 
 }
@@ -183,4 +181,37 @@ function set_task(event){
 			//finialy lets remove inputs for next time
 			document.getElementById("title").value ="";
 			document.getElementById("textarea").value ="";
+}
+
+const tasks = [
+	{
+		'id':1,
+		'title':"Work to modify this",
+		'content':'this is a plan container or note book',
+		'tasks': ['task1','task2'],
+		'date': '2025-12-10',
+		'color': 1
+	}
+]
+
+
+function loadTasks(){
+	tasks.map((task)=>{
+		return (
+			<div class="plan">
+				<div class="plan_title">{task.title}</div>
+				<div class="plan_desc">{task.content}</div>
+				<div>
+					<div class="plan_type">Task type</div>
+						<div class="plan_date">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-week" viewBox="0 0 16 16">
+						<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+						<path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-2 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+							</svg>
+						<span id="default">{task.date}</span>
+					</div>
+				</div>
+			</div>
+		)
+	})
 }
