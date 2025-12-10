@@ -28,20 +28,11 @@
  <div class="home">
         <span class="p_name">Your Plans Hub</span>
         <span class="some_desc">Plan,Track and Achive Your Goals</span>
-        <div class="quick-access"><input type="search" id="search" placeholder="search">  <span id="add" onclick="add_new_task()">+</span></div>
+        <div class="quick-access"><input type="search" id="search" placeholder="search">  <span id="add" onclick="add()">+</span></div>
         <div class="container"  id="container">
             <div id ="task_list">
-                <div class="plan">
-                    <input class="plan_title" placeholder="Title">
-                    <textarea class="plan_text">Add a new tsk to get ready</textarea>
-                    <div class="plan_action_btns">
-                        <div class="plan_type">[add checklist] [theme colors]</div>
-                        <span>date</span>
-                    </div>
-                </div>
-                
             </div>
-            <button onclick="add_new_task();">Add new task</button>
+            <button onclick="loadTasks();">Add new task</button>
         </div>
  </div>
     

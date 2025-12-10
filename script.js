@@ -182,36 +182,69 @@ function set_task(event){
 			document.getElementById("title").value ="";
 			document.getElementById("textarea").value ="";
 }
-
-const tasks = [
-	{
-		'id':1,
-		'title':"Work to modify this",
-		'content':'this is a plan container or note book',
-		'tasks': ['task1','task2'],
-		'date': '2025-12-10',
-		'color': 1
+var tasks = []
+var taskNo = tasks.length;
+function saveTasks(){
+	localStorage.setItem('planHubTasks',JSON.stringify(tasks));
+}
+function readTasks(){
+	const tasksString = localStorage.getItem('planHubTasks');
+	if(tasksString){
+		tasks = JSON.parse(tasksString);
+		taskNo = tasks.length;
 	}
-]
+	console.log(tasks);
+}
+loadTasks();
 
+function add(){
+
+	tasks.push({
+		'id': taskNo,
+		'title':'',
+		'content':'',
+		'tasks': [],
+		'date': new Date().toLocaleString(),
+		'color':0
+	})
+
+	list_holder.innerHTML += `<div class="plan">
+                    <input class="plan_title" placeholder="Title" onchange='saveChange(event,${index},"title")'>
+                    <textarea class="plan_text" placeholder="..." onchange='saveChange(${taskNo},"content")'></textarea>
+                    <div class="plan_action_btns">
+                        <div class="action_btns">[add checklist] [theme colors]</div>
+                        <span style='font-size:14px'>${new Date().toLocaleString()}</span>
+                    </div>
+                </div>`;
+	taskNo++;
+	saveTasks();
+}
+
+function saveChange(e,id,type){
+	console.log(e.target.value);
+	console.log(tasks[id] );
+	tasks[id][type] = e.target.value;
+	saveTasks();
+	// save permanently the change
+}
 
 function loadTasks(){
-	tasks.map((task)=>{
+	// read from local storage for persistency
+	readTasks();
+	list_holder.innerHTML = prepareTasks();
+}
+
+function prepareTasks(){
+	return tasks.map((task,index)=>{
 		return (
-			<div class="plan">
-				<div class="plan_title">{task.title}</div>
-				<div class="plan_desc">{task.content}</div>
-				<div>
-					<div class="plan_type">Task type</div>
-						<div class="plan_date">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-week" viewBox="0 0 16 16">
-						<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
-						<path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-2 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
-							</svg>
-						<span id="default">{task.date}</span>
-					</div>
-				</div>
-			</div>
+			`<div class="plan theme2">
+                    <input class="plan_title" placeholder="Title" value='${task.title}' onchange='saveChange(event,${index},"title")'>
+                    <textarea class="plan_text" onchange='saveChange(event,${index},"content")'>${task.content}</textarea>
+                    <div class="plan_action_btns">
+                        <div class="action_btns">[add checklist] [theme colors]</div>
+                        <span style='font-size:14px'>${task.date}</span>
+                    </div>
+                </div>`
 		)
 	})
 }
