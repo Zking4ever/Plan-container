@@ -96,9 +96,8 @@ input[type='search']:focus{
 #task_list{
     gap: 10px;
     color: black;
-    display: flex;
-    flex-wrap:wrap-reverse;
-    /* flex-direction: column-reverse; */
+    display: grid;
+    grid-template-columns: auto  auto;
     align-items: center;
     justify-content: center;
 }
@@ -185,7 +184,7 @@ textarea::-webkit-scrollbar{
     min-height: 60px;
     padding-left: 5px;
     text-align: left;
-    field-sizing: content;
+    field-sizing: content ;
 }
 .plan_action_btns{
     padding: 0 5px;
@@ -298,3 +297,15 @@ footer{
     flex-direction: column-reverse;
 }
 } 
+@media (max-width:400px) {
+    .quick-access{
+        width: 92%;
+    }
+    input[type='search']{
+        width: 200px;
+    }
+    .action_btns{
+        display: flex;
+        align-items: flex-start;
+    }
+}

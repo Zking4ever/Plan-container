@@ -117,6 +117,10 @@ function search(e){
 			matchTasks.push(t);
 		}
 	});
+	if(matchTasks.length==0){
+		list_holder.innerHTML = "<span style='color:gray'>NO ITEM FOUND</span>";
+		return;
+	}
 	list_holder.innerHTML = prepareTasks(matchTasks);
 }
 
