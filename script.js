@@ -103,6 +103,7 @@ function loadTasks(){
 	// read from local storage for persistency
 	readTasks();
 	list_holder.innerHTML = prepareTasks(tasks);
+	console.log(prepareTasks(tasks))
 }
 
 function search(e){
@@ -120,9 +121,9 @@ function search(e){
 }
 
 function prepareTasks(list){
-	return list.map((task,index)=>{
-		return (
-			`<div class="plan theme${task.color}">
+	let taskStaring = '';
+	list.map((task,index)=>{
+		taskStaring +=`<div class="plan theme${task.color}">
                     <input class="plan_title" placeholder="Title" value='${task.title}' onchange='saveChange(event,${index},"title")'>
                     <textarea class="plan_text" onchange='saveChange(event,${index},"content")'>${task.content}</textarea>
                     <div class="plan_action_btns">
@@ -130,10 +131,14 @@ function prepareTasks(list){
 							<div class='pt one' onclick='changeTaskTheme(${index},1)'></div>
 							<div class='pt two' onclick='changeTaskTheme(${index},2)'></div>
 							<div class='pt three' onclick='changeTaskTheme(${index},3)'></div>
+							<div class='pt four' onclick='changeTaskTheme(${index},4)'></div>
+							<div class='pt five' onclick='changeTaskTheme(${index},5)'></div>
+							<div class='pt six' onclick='changeTaskTheme(${index},6)'></div>
 						</div>
                         <span style='font-size:14px'>${task.date}</span>
                     </div>
-                </div>`
-		)
+                </div>`;
 	})
+	
+	return (taskStaring);
 }
