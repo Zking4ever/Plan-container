@@ -142,17 +142,3 @@ function prepareTasks(list){
 	
 	return (taskStaring);
 }
-
-// adjust the text area height with txt input
-
-const textareas = document.getElementsByClassName('plan_text');
-for (let i = 0; i < textareas.length; i++) {
-	textareas[i].addEventListener('keyup',()=>{
-		console.log(textareas[i].scrollHeight);
-		textareas[i].style.height = '60px';
-		let scrollheight = textareas[i].scrollHeight;
-		textareas[i].style.height =  `${scrollheight}px`;
-
-	})
-	
-}
