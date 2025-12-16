@@ -84,7 +84,14 @@ function changeTaskTheme(i, n) {
 function loadTasks() {
 	// read from local storage for persistency
 	readTasks();
-	list_holder.innerHTML = prepareTasks(tasks);
+	if (taskNo.length > 0) {
+		list_holder.innerHTML = prepareTasks(tasks);
+	} else {
+		list_holder.innerHTML = `<div></div> <div class='empty'>
+									<div class='placeholder'>No Task</div>
+									<span>Create your first plan or note</span>
+								</div>`;
+	}
 	// console.log(prepareTasks(tasks))
 }
 

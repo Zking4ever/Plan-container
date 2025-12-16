@@ -8,6 +8,7 @@
     --text-secondary: #94a3b8;
     --accent-color: #f59e0b;
     --accent-hover: #fbbf24;
+    --empty-placeholder: url('./images/dark-empty-placeholder-removebg-preview.png');
 
     --card-bg: rgba(255, 255, 255, 0.05);
     --card-border: rgba(255, 255, 255, 0.1);
@@ -29,6 +30,7 @@
 
     --text-primary: #1e293b;
     --text-secondary: #64748b;
+    --empty-placeholder: url('./images/light-empty-placeholder-removebg-preview.png');
 
     --card-bg: rgba(255, 255, 255, 0.7);
     --card-border: rgba(0, 0, 0, 0.05);
@@ -170,6 +172,30 @@ input[type='search']:focus {
     padding: 20px;
     width: 95%;
     padding-bottom: 50px;
+}
+#task_list:has(.empty){
+    place-items: center;
+    padding: 0%;
+}
+.empty{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 20px;
+    text-align: center;
+}
+.empty .placeholder{
+    width: 150px;
+    height: 40px;
+    background-image: var(--empty-placeholder);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 110px;
+    font-size: 18px;
 }
 
 input,
@@ -345,7 +371,7 @@ textarea::-webkit-scrollbar {
 footer {
     position: sticky;
     z-index: 100;
-    height: 50px;
+    height: 40px;
     background-color: var(--nav-bg);
     color: var(--text-secondary);
     backdrop-filter: blur(12px);
@@ -354,6 +380,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    bottom: 0px;
 }
 footer a{
     color: var(--text-secondary);
