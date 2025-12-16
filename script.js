@@ -1,74 +1,42 @@
 //changing the theme of the page
+theme = 1; //default day mode
 var change = document.getElementById("change_theme");
-change.addEventListener('click',function (){
-	var div = document.getElementById("theme_div");
-	var theme_id = div.getAttribute('data-theme-id');
-	if(theme_id == 1){
-		div.style.transform = "translateX(-100px)";
-		div.setAttribute('data-theme-id',"0");
-		day_mode();
-	}else{
-		div.style.transform = "translateX(0px)";
-		div.setAttribute('data-theme-id',"1");
-		night_mode();
+change.addEventListener('click', function () {
+	if (theme == 1) {
+		document.getElementsByTagName('body')[0].className = 'light-mode';
+		theme = 0;
+	} else {
+		document.getElementsByTagName('body')[0].className = 'dark-mode';
+		theme = 1;
 	}
 });
-var body = document.getElementsByTagName('Body')[0];
-function day_mode(){
-	body.style.backgroundColor="white";
-	body.style.color = "black";
-	document.getElementsByClassName('logo')[0].style.color = "white";
-	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(0,0,0,0.5)";
-	document.getElementById("date_selector").style.backgroundColor ="rgb(247, 238, 238)";
-	document.getElementById('date').style.backgroundColor ="white";
-	document.getElementById('task_contaier').style.backgroundColor ="white";
-	document.getElementById("textarea").style.border ="solid black";
-	document.getElementById("textarea").style.color ="black";
-	document.getElementById("title").style.border ="solid black";
-	document.getElementById("title").style.color ="black";
-	document.getElementById("to_do_name").style.border ="solid black";
-	document.getElementById("to_do_name").style.color ="black";
-}
-function night_mode(){
-	body.style.backgroundColor = "black";
-	body.style.color = "white";
-	document.getElementById("date_selector").style.backgroundColor ="rgb(36, 34, 34)";
-	document.getElementsByTagName('Header')[0].style.backgroundColor = "rgb(250, 250, 250,0.1) ";
-	document.getElementById('date').style.backgroundColor ="rgb(10, 9, 9)";
-	document.getElementById('task_contaier').style.backgroundColor ="rgb(0,0,34,0.95)";
-	document.getElementById("textarea").style.border ="solid white";
-	document.getElementById("textarea").style.color ="white";
-	document.getElementById("title").style.border ="solid white";
-	document.getElementById("title").style.color ="white";
-	document.getElementById("to_do_name").style.border ="solid white";
-	document.getElementById("to_do_name").style.color ="white";
-}
+
 
 
 var list_holder = document.getElementById('task_list');
 var tasks = []
 var taskNo = tasks.length;
-function saveTasks(){
-	localStorage.setItem('planHubTasks',JSON.stringify(tasks));
+function saveTasks() {
+	localStorage.setItem('planHubTasks', JSON.stringify(tasks));
 }
-function readTasks(){
+function readTasks() {
 	const tasksString = localStorage.getItem('planHubTasks');
-	if(tasksString){
+	if (tasksString) {
 		tasks = JSON.parse(tasksString);
 		taskNo = tasks.length;
 	}
 }
 loadTasks();
 
-function add(){
+function add() {
 
 	tasks.push({
 		'id': taskNo,
-		'title':'',
-		'content':'',
+		'title': '',
+		'content': '',
 		'tasks': [],
 		'date': new Date().toLocaleString(),
-		'color':1
+		'color': 1
 	})
 
 	list_holder.innerHTML += `<div class="plan theme1">
@@ -87,47 +55,47 @@ function add(){
 	saveTasks();
 }
 
-function saveChange(e,id,type){
+function saveChange(e, id, type) {
 	tasks[id][type] = e.target.value;
 	saveTasks();
 	// save permanently the change
 }
-function changeTaskTheme(i,n){
+function changeTaskTheme(i, n) {
 	tasks[i].color = n;
 	var plan = document.getElementsByClassName("plan");
-	plan[i].className = 'plan theme'+n;
+	plan[i].className = 'plan theme' + n;
 	saveTasks();
 }
 
-function loadTasks(){
+function loadTasks() {
 	// read from local storage for persistency
 	readTasks();
 	list_holder.innerHTML = prepareTasks(tasks);
 	// console.log(prepareTasks(tasks))
 }
 
-function search(e){
+function search(e) {
 	const key = (e.target.value).toLowerCase();
-	
+
 	const matchTasks = [];
-	tasks.map(t=>{ 
+	tasks.map(t => {
 		const title = String(t.title).toLowerCase();
 		const content = String(t.content).toLowerCase();
-		if(title.includes(key) || content.includes(key)){
+		if (title.includes(key) || content.includes(key)) {
 			matchTasks.push(t);
 		}
 	});
-	if(matchTasks.length==0){
+	if (matchTasks.length == 0) {
 		list_holder.innerHTML = "<span style='color:gray'>NO ITEM FOUND</span>";
 		return;
 	}
 	list_holder.innerHTML = prepareTasks(matchTasks);
 }
 
-function prepareTasks(list){
+function prepareTasks(list) {
 	let taskStaring = '';
-	list.map((task,index)=>{
-		taskStaring +=`<div class="plan theme${task.color}">
+	list.map((task, index) => {
+		taskStaring += `<div class="plan theme${task.color}">
                     <input class="plan_title" placeholder="Title" value='${task.title}' onchange='saveChange(event,${index},"title")'>
                     <textarea class="plan_text" onchange='saveChange(event,${index},"content")'>${task.content}</textarea>
                     <div class="plan_action_btns">
@@ -143,6 +111,6 @@ function prepareTasks(list){
                     </div>
                 </div>`;
 	})
-	
+
 	return (taskStaring);
 }
