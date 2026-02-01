@@ -30,23 +30,20 @@ loadTasks();
 
 function add() {
 
+	const color = Math.floor(Math.random() * 6) + 1;
 	tasks.push({
 		'id': taskNo,
 		'title': '',
 		'content': '',
 		'tasks': [],
 		'date': new Date().toLocaleString(),
-		'color': 1
+		'color': color
 	})
 	if(tasks.length == 1){
 		list_holder.innerHTML = '';
-		list_holder.style.display = 'flex';
-		// list_holder.style.flexDirection = 'column';
-	}else{
-		list_holder.style.display = 'grid';
 	}
 
-	list_holder.innerHTML += `<div class="plan theme${Math.floor(Math.random() * 6) + 1}">
+	list_holder.innerHTML += `<div class="plan theme${color}">
 					<div class="delete" onclick='deleteTask(${taskNo})'>
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
 							<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
@@ -71,7 +68,9 @@ function add() {
 	saveTasks();
 }
 function deleteTask(i) {
+	console.log(tasks);
 	tasks.splice(i, 1);
+	console.log(tasks);
 	saveTasks();
 	loadTasks();
 }
@@ -93,9 +92,11 @@ function loadTasks() {
 	readTasks();
 	
 	if (tasks.length > 0) {
+		list_holder.style.display = 'grid';
 		list_holder.innerHTML = prepareTasks(tasks);
 	} else {
-		list_holder.innerHTML = `<div></div> <div class='empty'>
+		list_holder.style.display = 'flex';
+		list_holder.innerHTML = `<div class='empty'>
 									<div class='placeholder'>No Task</div>
 									<span>Create your first plan or note</span>
 								</div>`;

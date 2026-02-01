@@ -31,7 +31,7 @@
     --empty-placeholder: url('./images/light-empty-placeholder-removebg-preview.png');
 
     --card-bg: rgba(255, 255, 255, 0.7);
-    --card-border: rgba(0, 0, 0, 0.05);
+    --card-border: rgba(0, 0, 0, 0.2);
     --card-hover-bg: rgba(255, 255, 255, 0.9);
 
     --nav-bg: rgba(255, 255, 255, 0.7);
@@ -377,6 +377,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     bottom: 0px;
+    transform: translateY(70%);
 }
 footer a{
     color: var(--text-secondary);
