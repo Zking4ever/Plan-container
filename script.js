@@ -38,6 +38,13 @@ function add() {
 		'date': new Date().toLocaleString(),
 		'color': 1
 	})
+	if(tasks.length == 1){
+		list_holder.innerHTML = '';
+		list_holder.style.display = 'flex';
+		// list_holder.style.flexDirection = 'column';
+	}else{
+		list_holder.style.display = 'grid';
+	}
 
 	list_holder.innerHTML += `<div class="plan theme${Math.floor(Math.random() * 6) + 1}">
 					<div class="delete" onclick='deleteTask(${taskNo})'>
@@ -46,10 +53,10 @@ function add() {
 							<path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
 						</svg>
 					</div>
-                    <input class="plan_title" placeholder="Title" onchange='saveChange(event,${taskNo},"title")'>
-                    <textarea class="plan_text" onchange='saveChange(event,${taskNo},"content")'></textarea>
-                    <div class="plan_action_btns">
-                        <div class="action_btns">
+					<input class="plan_title" placeholder="Title" onchange='saveChange(event,${taskNo},"title")'>
+					<textarea class="plan_text" onchange='saveChange(event,${taskNo},"content")'></textarea>
+					<div class="plan_action_btns">
+						<div class="action_btns">
 							<div class='pt one' onclick='changeTaskTheme(${taskNo},1)'></div>
 							<div class='pt two' onclick='changeTaskTheme(${taskNo},2)'></div>
 							<div class='pt three' onclick='changeTaskTheme(${taskNo},3)'></div>
@@ -57,9 +64,9 @@ function add() {
 							<div class='pt five' onclick='changeTaskTheme(${taskNo},5)'></div>
 							<div class='pt six' onclick='changeTaskTheme(${taskNo},6)'></div>
 						</div>
-                        <span style='font-size:14px'>${new Date().toLocaleString()}</span>
-                    </div>
-                </div>`;
+						<span style='font-size:14px'>${new Date().toLocaleString()}</span>
+					</div>
+				</div>`;
 	taskNo++;
 	saveTasks();
 }
@@ -84,7 +91,8 @@ function changeTaskTheme(i, n) {
 function loadTasks() {
 	// read from local storage for persistency
 	readTasks();
-	if (taskNo.length > 0) {
+	
+	if (tasks.length > 0) {
 		list_holder.innerHTML = prepareTasks(tasks);
 	} else {
 		list_holder.innerHTML = `<div></div> <div class='empty'>
@@ -92,7 +100,6 @@ function loadTasks() {
 									<span>Create your first plan or note</span>
 								</div>`;
 	}
-	// console.log(prepareTasks(tasks))
 }
 
 function search(e) {
